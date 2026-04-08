@@ -7,7 +7,7 @@
 
 <!-- Shields -->
 
-[![Run tests](https://github.com/grrr-amsterdam/nova-publish/actions/workflows/run-tests.yaml/badge.svg)](https://github.com/grrr-amsterdam/nova-publish/actions/workflows/run-tests.yaml) [![Code style](https://github.com/grrr-amsterdam/nova-publish/actions/workflows/code-style.yaml/badge.svg)](https://github.com/grrr-amsterdam/nova-publish/actions/workflows/code-style.yaml)
+[![Run tests](https://github.com/norday-agency/nova-publish/actions/workflows/run-tests.yaml/badge.svg)](https://github.com/norday-agency/nova-publish/actions/workflows/run-tests.yaml) [![Code style](https://github.com/norday-agency/nova-publish/actions/workflows/code-style.yaml/badge.svg)](https://github.com/norday-agency/nova-publish/actions/workflows/code-style.yaml)
 
 <!-- Description -->
 
@@ -37,7 +37,7 @@ Add the repository to `composer.json`
 "repositories": [
     {
         "type": "vcs",
-        "url": "https://github.com/grrr-amsterdam/nova-publish"
+        "url": "https://github.com/norday-agency/nova-publish"
     }
 ]
 ```

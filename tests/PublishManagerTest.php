@@ -2,10 +2,7 @@
 
 namespace Tests;
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
-use Publish\Exception;
-use Publish\GitHubStatus;
 use Publish\PublishManager;
 use Publish\Run;
 
@@ -19,7 +16,7 @@ class PublishManagerTest extends TestCase
 
         // Fake the test-workflow.yml workflow without any runs.
         Http::fake([
-            "api.github.com/repos/grrr-amsterdam/nova-publish/actions/workflows/test-workflow.yml/runs" => Http::response(
+            "api.github.com/repos/norday-agency/nova-publish/actions/workflows/test-workflow.yml/runs" => Http::response(
                 ["workflow_runs" => []]
             ),
         ]);

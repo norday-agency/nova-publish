@@ -27,7 +27,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
             );
             $config->set(
                 "publish.owner",
-                env("NOVA_PUBLISH_OWNER", "grrr-amsterdam")
+                env("NOVA_PUBLISH_OWNER", "norday-agency")
             );
             $config->set(
                 "publish.repository",

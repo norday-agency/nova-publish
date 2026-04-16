@@ -23,7 +23,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
             );
             $config->set(
                 "publish.private_key",
-                env("NOVA_PUBLISH_PRIVATE_KEY")
+                env("NOVA_PUBLISH_PRIVATE_KEY", "dummy-key")
             );
             $config->set(
                 "publish.owner",

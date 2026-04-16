@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Publish\PublishManager;
 use Publish\Run;
@@ -14,7 +15,9 @@ class PublishManagerTest extends TestCase
             "Workflow test-workflow.yml hasn't run yet. Run it once manually via GitHub to kickstart nova-publish."
         );
 
-        // Fake the test-workflow.yml workflow without any runs.
+        // Seed the cache so the access token flow (JWT + installations) is skipped entirely.
+        Cache::put("nova-publish-github-access-token", "fake-token");
+
         Http::fake([
             "api.github.com/repos/norday-agency/nova-publish/actions/workflows/test-workflow.yml/runs" => Http::response(
                 ["workflow_runs" => []]

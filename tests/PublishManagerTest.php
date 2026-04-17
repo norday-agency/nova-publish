@@ -31,6 +31,23 @@ class PublishManagerTest extends TestCase
 
     public function testGetLastRun(): void
     {
+        Cache::put("nova-publish-github-access-token", "fake-token");
+
+        Http::fake([
+            "api.github.com/repos/norday-agency/nova-publish/actions/workflows/test-workflow.yml/runs" => Http::response(
+                [
+                    "workflow_runs" => [
+                        [
+                            "conclusion" => "success",
+                            "status" => "completed",
+                            "created_at" => "2025-01-01T00:00:00Z",
+                            "updated_at" => "2025-01-01T00:01:00Z",
+                        ],
+                    ],
+                ]
+            ),
+        ]);
+
         /** @var PublishManager $manager */
         $manager = app(PublishManager::class);
 
@@ -41,17 +58,35 @@ class PublishManagerTest extends TestCase
 
     public function testStartPublish(): void
     {
+        Cache::put("nova-publish-github-access-token", "fake-token");
+
+        Http::fake([
+            "api.github.com/repos/norday-agency/nova-publish/actions/workflows/test-workflow.yml/runs" => Http::response(
+                [
+                    "workflow_runs" => [
+                        [
+                            "conclusion" => "success",
+                            "status" => "completed",
+                            "created_at" => "2025-01-01T00:00:00Z",
+                            "updated_at" => "2025-01-01T00:01:00Z",
+                        ],
+                    ],
+                ]
+            ),
+            "api.github.com/repos/norday-agency/nova-publish/actions/workflows/test-workflow.yml/dispatches" => Http::response(
+                [],
+                204
+            ),
+        ]);
+
         /** @var PublishManager $manager */
         $manager = app(PublishManager::class);
 
         $manager->publish("main");
 
-        // Wait for the workflow run to become available in the API.
-        sleep(1);
-
-        $newRun = $manager->getLastRun();
-
-        // Just check for the right result, because tests are running in parallel it's hard to predict the exact outcome.
-        $this->assertInstanceOf(Run::class, $newRun);
+        Http::assertSent(function ($request) {
+            return str_contains($request->url(), "dispatches") &&
+                $request["ref"] === "main";
+        });
     }
 }

@@ -53,5 +53,3 @@ jobs:
 
       - name: Run PHP tests
         run: vendor/bin/phpunit
-        # env:
-        # NOVA_PUBLISH_PRIVATE_KEY: ${{ secrets.NOVA_PUBLISH_PRIVATE_KEY }}

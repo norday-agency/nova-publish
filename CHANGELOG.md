@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 4.0.0
+
+- Add support for Nova 5
+- Drop support for Nova 4
+
 ## 3.0.0
 
 - Add support for GitHub Apps

@@ -25,7 +25,7 @@
 [Return To Top](#nova-publish)
 
 - PHP 8.2, 8.3, 8.4
-- Nova 4
+- Nova 5
 
 ## Installation
 

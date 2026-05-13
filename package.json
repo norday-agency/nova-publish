@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@prettier/plugin-php": "^0.19.4",
+    "laravel-nova-ui": "^0.4.12",
     "prettier": "^2.8.8"
   }
 }

@@ -7,9 +7,9 @@
       {{ __("Publish the site to make your changes visible to the public") }}
     </p>
 
-    <default-button @click="publish" :disabled="!!publishing" class="mb-6">
+    <Button @click="publish" :disabled="!!publishing" class="mb-6">
       {{ __("Publish a new site") }}
-    </default-button>
+    </Button>
 
     <p v-if="error" class="error text-error-message mb-6">
       {{
@@ -40,7 +40,10 @@
 </template>
 
 <script>
+import { Button } from "laravel-nova-ui";
+
 export default {
+  components: { Button },
   mounted() {
     this.updateStatus();
     this.startStatusRefresh();

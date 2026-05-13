@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.0.1
+
+- Fix publish button not rendering under Nova 5 by replacing the removed `<default-button>` global component with `<Button>` from `laravel-nova-ui`
+
 ## 4.0.0
 
 - Add support for Nova 5

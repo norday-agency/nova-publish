@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.0.2
+
+- Fix `TypeError` when the GitHub API returns an error without a `status` field in the response body; the HTTP status code is now used instead
+
 ## 4.0.1
 
 - Fix publish button not rendering under Nova 5 by replacing the removed `<default-button>` global component with `<Button>` from `laravel-nova-ui`

@@ -29,6 +29,27 @@ class PublishManagerTest extends TestCase
         $manager->getLastRun();
     }
 
+    public function testLastRunThrowsGitHubErrorWithHttpStatusCode(): void
+    {
+        $this->expectExceptionMessage(
+            "GitHub API error (401): Bad credentials"
+        );
+
+        Cache::put("nova-publish-github-access-token", "fake-token");
+
+        // GitHub error bodies don't always contain a "status" field.
+        Http::fake([
+            "api.github.com/repos/norday-agency/nova-publish/actions/workflows/test-workflow.yml/runs" => Http::response(
+                ["message" => "Bad credentials"],
+                401
+            ),
+        ]);
+
+        /** @var PublishManager $manager */
+        $manager = app(PublishManager::class);
+        $manager->getLastRun();
+    }
+
     public function testGetLastRun(): void
     {
         Cache::put("nova-publish-github-access-token", "fake-token");

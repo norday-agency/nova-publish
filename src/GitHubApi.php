@@ -19,8 +19,8 @@ class GitHubApi
 
         if ($response->status() >= 400) {
             throw Exception::gitHubError(
-                $response->json("status"),
-                $response->json("message")
+                $response->status(),
+                $response->json("message") ?? $response->reason()
             );
         }
 
@@ -41,8 +41,8 @@ class GitHubApi
 
         if ($response->status() >= 400) {
             throw Exception::gitHubError(
-                $response->json("status"),
-                $response->json("message")
+                $response->status(),
+                $response->json("message") ?? $response->reason()
             );
         }
 
@@ -57,8 +57,8 @@ class GitHubApi
 
         if ($response->status() >= 400) {
             throw Exception::gitHubError(
-                $response->json("status"),
-                $response->json("message")
+                $response->status(),
+                $response->json("message") ?? $response->reason()
             );
         }
 
@@ -84,8 +84,8 @@ class GitHubApi
 
         if ($response->status() >= 400) {
             throw Exception::gitHubError(
-                $response->json("status"),
-                $response->json("message")
+                $response->status(),
+                $response->json("message") ?? $response->reason()
             );
         }
 
